@@ -1,37 +1,22 @@
 from random import *
 import json
-
-characters = [
-    "Mario",
-    "Donkey Kong",
-    "Link",
-    "Samus",
-    "Dark Samus",
-    "Yoshi",
-    "Kirby",
-    "Fox",
-    "Pikachu",
-    "Luigi",
-    "Ness",
-    "Captian Falcon",
-    "Jigglypuff"
-]
+from data import *
 
 def main():
     tiles = []
 
     for i in range(0, 25):
-        tiles.append({ 'name': characterWins() })
+        tiles.append({ 'name': fighterWins() })
     
-    f = open("foo.json", "w")
+    f = open("card.json", "w")
     f.write(json.dumps(tiles, indent=2))
     f.close()
 
 
-def characterWins():
-    character = characters[randint(0, len(characters)-1)]
+def fighterWins():
+    fighter = fighters[randint(0, len(fighters)-1)]
     wins = randint(1, 4)
 
-    return str(wins) + " Win(s) with " + character
+    return str(wins) + " Win(s) with " + fighter
 
 main()
