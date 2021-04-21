@@ -7,9 +7,17 @@ def main():
     tiles = []
 
     for i in range(0, 25):
-        tiles.append({ 'name': fighterWins() })
+        name = ""
+        tileType = randint(0, 1)
+
+        if (tileType == 0):
+            name = fighterWins()
+        elif (tileType == 1):
+            name = fighterKills()
+
+        tiles.append({ 'name': name })
     
-    f = open("card-" + genTimestamp() + ".json", "w")
+    f = open("cards/card-" + genTimestamp() + ".json", "w")
     f.write(json.dumps(tiles, indent=2))
     f.close()
 
@@ -20,6 +28,15 @@ def genTimestamp():
 
 def fighterWins():
     wins = randint(1, 4)
-    return str(wins) + " Win(s) with " + randFighter()
+
+    plural = ""
+    if wins > 1: plural = "s"
+
+    return f"{wins} Win{plural} with {randFighter()}"
+
+def fighterKills():
+    kills = randint(3, 8)
+
+    return f"{kills} Kills with {randFighter()}"
 
 main()
