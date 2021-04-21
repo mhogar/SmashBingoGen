@@ -1,6 +1,7 @@
 from random import *
 import json
 from datetime import datetime
+from weighted_random import weighted_random
 from data import randFighter
 
 def main():
@@ -8,7 +9,7 @@ def main():
 
     for i in range(0, 25):
         name = ""
-        tileType = randint(0, 1)
+        tileType = weighted_random([.5, .5])
 
         if (tileType == 0):
             name = fighterWins()
