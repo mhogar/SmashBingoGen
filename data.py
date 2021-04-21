@@ -1,3 +1,5 @@
+from random import randint
+
 fighters = [
     "Mario",
     "Donkey Kong",
@@ -82,3 +84,6 @@ fighters = [
     "Sephiroth",
     "Pyra/Mythra",
 ]
+
+def randFighter():
+    return fighters[randint(0, len(fighters)-1)]
